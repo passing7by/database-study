@@ -1,4 +1,4 @@
--- Active: 1749604230285@@127.0.0.1@3306@university
+-- Active: 1749604230285@@127.0.0.1@3306@company
 /*
 4. 데이터 집계하기
 4.1 집계 함수(Aggregate Function)란
