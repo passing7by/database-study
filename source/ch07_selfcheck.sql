@@ -16,37 +16,25 @@
 -- ------------------------
 
 -- 1. 사용자 닉네임과 계정 공개 여부 조회
-SELECT nickname, private
+SELECT
+  nickname AS '닉네임',
+  private AS '계정 공개 여부'
 FROM users AS u
-JOIN settings AS s
-  ON u.id = s.user_id;
+JOIN settings AS s ON u.id = s.user_id;
 
 -- 2. 사진 파일명과 올린 사람 닉네임 조회
 -- photos-filename, users-nickname
-SELECT filename, nickname
+SELECT
+  filename AS '파일명', 
+  nickname AS '게시자'
 FROM photos AS p
-JOIN users AS u
-  ON p.user_id = u.id;
+JOIN users AS u ON p.user_id = u.id;
 
 -- 3. 모든 사진 파일명과 올린 사람 닉네임 조회
 -- photos-filename, users-nickname
 -- left outer join
-  SELECT filename, nickname
+  SELECT 
+    filename AS '파일명', 
+    nickname AS '게시자'
   FROM photos AS p
-  LEFT JOIN users AS u
-  ON p.user_id = u.id
-
--- full outer join
-(
-  SELECT filename, nickname
-  FROM photos AS p
-  LEFT JOIN users AS u
-  ON p.user_id = u.id
-)
-UNION
-(
-  SELECT filename, nickname
-  FROM photos AS p
-  RIGHT JOIN users AS u
-  ON p.user_id = u.id
-);
+  LEFT JOIN users AS u ON p.user_id = u.id;
